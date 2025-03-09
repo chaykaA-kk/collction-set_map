@@ -11,6 +11,14 @@ public class Departement {
 		 LEmployes=new HashSet<>();
 	}
 	
+	public Set<Employe> getLEmployes() {
+		return LEmployes;
+	}
+
+	public void setLEmployes(Set<Employe> lEmployes) {
+		LEmployes = lEmployes;
+	}
+
 	public int getIdDep() {
 		return idDep;
 	}

@@ -18,7 +18,8 @@ public class test {
         D2.ajoutEmploye(E3);
         entreprise.ajoutDep(D2);
         entreprise.afficheE();
-        entreprise.UpdateDep(E, 5678);
+        
+        entreprise.UpdateDep(E, 567);
         entreprise.afficheE();
        // entreprise.retirerDep(D);
         entreprise.DepMinCapacity();

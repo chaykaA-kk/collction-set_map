@@ -28,40 +28,35 @@ public class Entreprise {
 	
 	public void UpdateDep(Employe E, int idDep)
 	{
-		Departement ancien = null;
-        for (Departement d:Liste_Deps.values()) {
-            if (d.existeE(E.getCin())){
-                ancien=d;
- 
-            }
-        }
-        if (ancien != null) {
-            ancien.retirerEmploye(E);
-        }
-        if (Liste_Deps.containsKey(idDep)) {
-            Liste_Deps.get(idDep).ajoutEmploye(E);
-        }
+		if (!Liste_Deps.containsKey(idDep)) {
+	        System.out.println("Le département avec l'ID " + idDep + " n'existe pas.");
+	    }
+		else{
+			Departement anc = Liste_Deps.get(E.getIddep());
+			
+	        anc.retirerEmploye(E);
+	        Departement nv = Liste_Deps.get(idDep);
+	        nv.ajoutEmploye(E);
+	        E.setIddep(idDep);
+			System.out.println("employe transferer" + idDep);
 		}
-		//vérifier si un département donné en paramètre appartient à la société ou pas
+		}
 	public boolean existeD(Departement d)
 		{
 		 return Liste_Deps.containsKey(d.getIdDep());
 		}
-		//afficher le département ayant le plus petit nombre d’étudiants
 	public void DepMinCapacity()
 		{
-		 Departement minDep = null;
-	        int minSize = Integer.MAX_VALUE;
-		for (Departement d : Liste_Deps.values()) {
-            int size=d.LEmployes.size();
-            if (size<minSize) {
-                minSize=size;
-                minDep=d;
-            }
-        }
-        if (minDep!=null) {
-            minDep.afficheDep();
-        }
+		 Departement mindep = null;
+			int mincap = Integer.MAX_VALUE;
+
+	    for (Departement d : Liste_Deps.values()) {
+	        if (d.getLEmployes().size() < mincap) {
+	            mincap = d.getLEmployes().size();
+	            mindep = d;
+	        }
+	    }
+	    mindep.afficheDep();
 		}
 
 }
